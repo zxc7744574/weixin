@@ -1,0 +1,25 @@
+<!--index.wxml-->
+<!-- <view class="container">
+
+  <view class="userinfo">
+    <image background-size="cover" class="userinfo-avatar" src="{{avatarUrl}}"></image>
+    <text class="userinfo-nickname">Bug Luv</text>
+  </view>
+
+  <view class="usermotto" style="margin-top:50rpx;">
+    <text class="user-motto">Hello World</text>
+  </view>
+
+</view> -->
+
+<editor
+  id="editor"
+  class="ql-container"
+  placeholder="{{placeholder}}"
+  showImgSize
+  showImgToolbar
+  showImgResize
+  bindstatuschange="onStatusChange"
+  read-only="{{readOnly}}"
+  bindready="onEditorReady">
+</editor>
