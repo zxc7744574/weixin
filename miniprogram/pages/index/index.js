@@ -3,12 +3,15 @@ const app = getApp()
 
 Page({
   data: {
-    avatarUrl: './user-unlogin.png',
-    userInfo: {},
-    logged: false,
-    takeSession: false,
-    requestResult: '',
-    src: './wufei.jpg'
+    city: '',
+    updatetime: '',
+    today: '',
+    week: '',
+    wea: '',
+    air: '',
+    tips: '',
+    mintem: '',
+    maxtem: '',
   },
 
   onLoad: function() {
@@ -37,14 +40,28 @@ Page({
     })
   },
 
-  onGetUserInfo: function(e) {
-    if (!this.logged && e.detail.userInfo) {
-      this.setData({
-        logged: true,
-        avatarUrl: e.detail.userInfo.avatarUrl,
-        userInfo: e.detail.userInfo
-      })
-    }
+  formSubmit: function(e) {
+    var that = this;
+    var version = "v1"; //天气接口必备数据，无需修改
+    var city = e.detail.value.city;
+    wx.request({
+      url: 'https://www.tianqiapi.com/api/',
+      data: {version: version, city: city},
+      header: {'content-type': 'application/json'},
+      success: function(res) {
+        that.setData({
+          city: res.data.city,
+          updatetime: res.data.update_time,
+          today: res.data.data[0].day,
+          week: res.data.data[0].week,
+          wea: res.data.data[0].wea,
+          air: res.data.data[0].air_level,
+          tips: res.data.data[0].air_tips,
+          mintem: res.data.data[0].tem2,
+          maxtem: res.data.data[0].tem1,
+        })
+      }
+    })
   },
 
   onGetOpenid: function() {

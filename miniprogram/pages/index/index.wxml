@@ -1,25 +1,26 @@
 <!--index.wxml-->
-<!-- <view class="container">
+<form bindsubmit="formSubmit">
 
-  <view class="userinfo">
-    <image background-size="cover" class="userinfo-avatar" src="{{avatarUrl}}"></image>
-    <text class="userinfo-nickname">Bug Luv</text>
+  <view class="section">
+    <view class="section__title">请输入城市</view>
+    <input name="city" placeholder="please input here" />
   </view>
 
-  <view class="usermotto" style="margin-top:50rpx;">
-    <text class="user-motto">Hello World</text>
-  </view>
+<view class="btn-area">
+  <button type="primary" form-type="submit"> 查询 </button>
+</view>
 
-</view> -->
+</form>
 
-<editor
-  id="editor"
-  class="ql-container"
-  placeholder="{{placeholder}}"
-  showImgSize
-  showImgToolbar
-  showImgResize
-  bindstatuschange="onStatusChange"
-  read-only="{{readOnly}}"
-  bindready="onEditorReady">
-</editor>
+<view wx:if="{{city}}">
+  <view class="section__title">查询城市：{{city}}</view>
+  <view class="section__title">今天是：{{today}}</view>
+  <view class="section__title">今天是{{week}}</view>
+  <view class="section__title">今日天气：{{wea}}</view>
+  <view class="section__title">今日空气：{{air}}</view>
+  <view class="section__title">温度{{mintem}} - {{maxtem}}</view>
+  <view class="section__title">天气更新时间：{{updatetime}}</view>
+  <view class="section__title">空气建议：{{tips}}</view>
+</view>
+
+
